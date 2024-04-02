@@ -39,8 +39,8 @@ Post message payload includes the following attributes as a JSON object:
 
 ```json
 {
-  "type": "The post message type, see the post message type section below for more details",
-  "message": "post message data, see the post message data fields section below for more details",
+  "type": "The post message type, see the `Post Message Types` section below for more details",
+  "message": "post message data, see the `Post Message Data Fields` section below for more details",
   "inputData": {
     "userId": "Represents the user ID passed when the iFrame was called for the first time in the session",
     "sessionId": "Represents the session ID passed when the iFrame was called for the first time in the session",
@@ -61,11 +61,15 @@ Post message payload includes the following attributes as a JSON object:
 | Bria_InitialLoadComplete  | iFrame initial page load is complete, can be used to show a loader on your web page      |                       |
 | Bria_GalleryImageOpen     | The user clicks an image in the galley page                                              |                       |
 | Bria_GalleryOpen          | The user opened the gallery page                                                         |                       |
+| Bria_IframePageNavigation | The user navigated between iFrame pages                                                  | `page`, `path`        |
 | Bria_CloseClicked         | The user clicked on the iFrame close button, in case you enabled the iFrame close button |                       |
 
 ### Post Message Data Fields
 
+The below attributes are passed through the `message` field:
 * `imageUrl`: The URL of the manipulated image
 * `changes`: The changes applied to the manipulated image
 * `type`: The type of the manipulation, can be: `expression`, `diversity`, `remove_object`, `increase_resolution`, `remove_background`, `Blur_background`, `Image_Style`, `replace_background`, `uncrop` or `presenters_style`
 * `action`: Specific values for the manipulation, for example, the selected face `expression` manipulation value (`Happy`, `Sad`, etc.)
+* `page`: The name of the navigated page, could be `gallery`, `playground`, etc.
+* `path`: The path of the navigated page, could be `/gallery`, `/gallery/{vhash}`, etc.

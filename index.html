@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bria's iFrame</title></head>
+    <style>
+        html, body, .container {
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .titleContainer {
+            padding: 10px 0;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        iframe {
+            height: 85%;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="titleContainer">
+                <span class="title">Bria's iFrame Example</span>
+                <span> // Open browser console to see post messages</span>
+            </div>
+            <iframe src="https://prod.embedded.bria.ai/?iframeId=1"></iframe>
+        </div>
+        <script>
+            window.addEventListener(
+                "message",
+                (event) => {
+                    if (event.data && event.data["type"] && event.data["type"].startsWith("Bria")) {
+                        console.log(`Event received: ${JSON.stringify(event.data)}`);
+                    }
+                },
+                false
+            );
+        </script>
+    </body>
+</html>
+
