@@ -6,7 +6,7 @@ By embedding BRIA's iFrame, you can offer your users a seamless and intuitive in
 The process of integrating BRIA's iFrame into your web application consists of three main steps:
 
 ### Step 1: Create Your iFrame on BRIA's Platform
-Begin by creating your iFrame on BRIA's platform. Here, you have the flexibility to customize the iFrame's features and user experience to align with the needs of your product's users. You can also tailor the iFrame's appearance to match your brand's style. Once you have configured the iFrame to your satisfaction, BRIA's platform will provide you with a unique URL. This URL is specifically generated for your iFrame to be embedded into your website.
+Begin by creating your iFrame on BRIA's platform. Here, you have the flexibility to customize the iFrame's features and user experience to align with the needs of your product's users. You can also tailor the iFrame's appearance to match your brand's style. Once you have configured the iFrame to your satisfaction, BRIA's platform will provide you with a unique URL. This URL is specifically generated for your iFrame to be embedded into your website. Use this URL in the `<iframe>` tag src attribute, check `index.html` file as an example.
 
 ### Step 2: Embed Your Unique BRIA's URL on Your Site
 The next step involves embedding the unique URL provided by BRIA into your web application. This integration allows the iFrame to become a part of your site, offering a cohesive and integrated user experience.
