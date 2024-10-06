@@ -76,6 +76,7 @@ Post message payload includes the following attributes as a JSON object:
 | Bria_ImageSavePSD         | The user clicks on the save PSD button                                                   | `imageUrl`, `changes` |
 | Bria_ImageDownload        | The user clicks on the download image button                                             | `imageUrl`, `changes` |
 | Bria_ApplyChange          | An image is manipulated in the Playground                                                | `type`, `action`      |
+| Bria_ApiAction            | An API action is made                                                                    | `type`                |
 | Bria_InitialLoadComplete  | iFrame initial page load is complete, can be used to show a loader on your web page      |                       |
 | Bria_GalleryImageOpen     | The user clicks an image in the galley page                                              |                       |
 | Bria_GalleryOpen          | The user opened the gallery page                                                         |                       |
