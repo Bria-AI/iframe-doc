@@ -2,6 +2,8 @@
 Welcome to the comprehensive guide on integrating BRIA's iFrame into your web applications. This cutting-edge tool is designed to revolutionize the way users interact with image generation technologies.
 By embedding BRIA's iFrame, you can offer your users a seamless and intuitive interface for generating and customizing images with advanced AI capabilities. Our guide will walk you through the necessary steps to implement this innovative editor, ensuring a smooth integration process.
 
+---
+
 ## Integration Process Overview
 The process of integrating BRIA's iFrame into your web application consists of three main steps:
 
@@ -16,6 +18,8 @@ Finally, it's essential to set up a mechanism to listen to post messages generat
 
 By following these steps, you can successfully integrate BRIA's iFrame into your web application, enhancing its capabilities and offering a unique experience to your users.
 
+---
+
 ## iFrame URL Query Parameters
 
 | Query Parameter         | Details                                                                                                                                                                         | Is required?                                                                                        |
@@ -28,6 +32,8 @@ By following these steps, you can successfully integrate BRIA's iFrame into your
 | `userId`                | The userId coming from the parent site, we return this value in the postMessages                                                                                                |                                                                                                     |
 | `sessionId`             | The sessionId coming from the parent site, we return this value in the postMessages                                                                                             |                                                                                                     |
 | `selectedTab`           | To open a specific tab in the playground, for example: presenters, size, etc.                                                                                                   |                                                                                                     |
+
+---
 
 ## Running the Example
 Follow the below steps to run the example:
@@ -46,6 +52,7 @@ Follow the below steps to run the example:
     docker stop bria-iframe-container
     docker rm bria-iframe-container
     ```
+---
 
 ## Post Messages
 Set up a system to capture and process post messages from the iFrame, linking user interactions directly to your application.
