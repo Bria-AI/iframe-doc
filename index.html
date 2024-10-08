@@ -22,14 +22,21 @@
         }
     </style>
     <body>
-        <div class="container">
+        <div class="container" id="container">
             <div class="titleContainer">
                 <span class="title">Bria's iFrame Example</span>
                 <span> // Open browser console to see post messages</span>
             </div>
-            <iframe src="https://prod.embedded.bria.ai/?iframeId=1"></iframe>
         </div>
         <script>
+            const iframeId = "1";
+            const vhash = "8679a552aa79cc96"
+            const iframeUrl = `https://prod.embedded.bria.ai/?iframeId=${iframeId}&sourceDomain=${window.location.origin}&vhash=${vhash}`;
+
+            const iframeElement = document.createElement("iframe");
+            iframeElement.setAttribute("src", iframeUrl);
+            document.getElementById("container").appendChild(iframeElement);
+
             window.addEventListener(
                 "message",
                 (event) => {
