@@ -16,9 +16,23 @@ Finally, it's essential to set up a mechanism to listen to post messages generat
 
 By following these steps, you can successfully integrate BRIA's iFrame into your web application, enhancing its capabilities and offering a unique experience to your users.
 
+## iFrame URL Query Parameters
+
+| Query Parameter         | Details                                                                                                                                                                         | Is required?                                                                                        |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `iframeId`              | The ID of the iFrame                                                                                                                                                            | Yes                                                                                                 |
+| `vhash`                 | BRIA's visual ID of the image to open inside the iFrame Playground page, you can use this if you already have the image registered into BRIA                                    | Either imageUrl or vhash is required in case the iFrame starting page is set to the Playground page |
+| `imageUrl`              | The URL of the image to open inside the iFrame Playground page                                                                                                                  | Either imageUrl or vhash is required in case the iFrame starting page is set to the Playground page |
+| `usageText`             | It is possible to add text that will appear in the header row in the Playground page (note: it is advised to keep the text as short as possible to fit the space in the header) | No                                                                                                  |
+| `sourceDomain`          | Should pass the parent website host in order to make postMessages work, example: https://example.com                                                                            |                                                                                                     |
+| `userId`                | The userId coming from the parent site, we return this value in the postMessages                                                                                                |                                                                                                     |
+| `sessionId`             | The sessionId coming from the parent site, we return this value in the postMessages                                                                                             |                                                                                                     |
+| `selectedTab`           | To open a specific tab in the playground, for example: presenters, size, etc.                                                                                                   |                                                                                                     |
+
 ## Running the Example
 Follow the below steps to run the example:
-1. Build docker
+1. Replace the example iFrame link in `index.html` with the link you got through BRIA's Platform
+2. Build docker
     ```
     docker build -t bria-iframe .
     ```
@@ -70,18 +84,18 @@ Post message payload includes the following attributes as a JSON object:
 
 ### Post Message Types:
 
-| Post message type         | Triggered when                                                                           | Data provided         |
-|---------------------------|------------------------------------------------------------------------------------------|-----------------------|
-| Bria_ImageSave            | The user clicks on the save image button                                                 | `imageUrl`, `changes` |
-| Bria_ImageSavePSD         | The user clicks on the save PSD button                                                   | `imageUrl`, `changes` |
-| Bria_ImageDownload        | The user clicks on the download image button                                             | `imageUrl`, `changes` |
-| Bria_ApplyChange          | An image is manipulated in the Playground                                                | `type`, `action`      |
-| Bria_ApiAction            | An API action is made                                                                    | `type`                |
-| Bria_InitialLoadComplete  | iFrame initial page load is complete, can be used to show a loader on your web page      |                       |
-| Bria_GalleryImageOpen     | The user clicks an image in the galley page                                              |                       |
-| Bria_GalleryOpen          | The user opened the gallery page                                                         |                       |
-| Bria_IframePageNavigation | The user navigated between iFrame pages                                                  | `page`, `path`        |
-| Bria_CloseClicked         | The user clicked on the iFrame close button, in case you enabled the iFrame close button |                       |
+| Post message type           | Triggered when                                                                           | Data provided         |
+|-----------------------------|------------------------------------------------------------------------------------------|-----------------------|
+| `Bria_ImageSave`            | The user clicks on the save image button                                                 | `imageUrl`, `changes` |
+| `Bria_ImageSavePSD`         | The user clicks on the save PSD button                                                   | `imageUrl`, `changes` |
+| `Bria_ImageDownload`        | The user clicks on the download image button                                             | `imageUrl`, `changes` |
+| `Bria_ApplyChange`          | An image is manipulated in the Playground                                                | `type`, `action`      |
+| `Bria_ApiAction`            | An API action is made                                                                    | `type`                |
+| `Bria_InitialLoadComplete`  | iFrame initial page load is complete, can be used to show a loader on your web page      |                       |
+| `Bria_GalleryImageOpen`     | The user clicks an image in the galley page                                              |                       |
+| `Bria_GalleryOpen`          | The user opened the gallery page                                                         |                       |
+| `Bria_IframePageNavigation` | The user navigated between iFrame pages                                                  | `page`, `path`        |
+| `Bria_CloseClicked`         | The user clicked on the iFrame close button, in case you enabled the iFrame close button |                       |
 
 ### Post Message Data Fields
 
