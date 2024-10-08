@@ -21,6 +21,7 @@ By following these steps, you can successfully integrate BRIA's iFrame into your
 ---
 
 ## iFrame URL Query Parameters
+URL query parameters are pieces of information added to the iFrame URL to pass specific details that affect the content or behavior of the iFrame.
 
 | Query Parameter         | Details                                                                                                                                                                         | Is required?                                                                                        |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
