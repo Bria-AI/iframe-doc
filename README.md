@@ -1,4 +1,4 @@
-# Bria iFrame
+# Bria iFrame v2.0
 Welcome to the comprehensive guide on integrating BRIA's iFrame into your web applications. This cutting-edge tool is designed to revolutionize the way users interact with image generation technologies.
 By embedding BRIA's iFrame, you can offer your users a seamless and intuitive interface for generating and customizing images with advanced AI capabilities. Our guide will walk you through the necessary steps to implement this innovative editor, ensuring a smooth integration process.
 
