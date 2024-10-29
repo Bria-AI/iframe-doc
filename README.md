@@ -81,12 +81,12 @@ Post message payload includes the following attributes as a JSON object:
 
 ### Post Message Types:
 
-| Post message type          | Triggered when                                                                                    | Data provided         |
-|----------------------------|---------------------------------------------------------------------------------------------------|-----------------------|
-| `Bria_InitialLoadComplete` | iFrame initial page load is complete, can be used to show a loader on your web page               |                       |
-| `Bria_CloseClicked`        | The user clicked on the iFrame close button, in case you enabled the iFrame close button          |                       |
-| `Bria_Navigate`            | The user navigated between iFrame pages                                                           | `page`, `path`        |
-| `Bria_Action`              | An action is made by the user, see the `Post Message Action Types` section below for more details | `type`                |
+| Post message type          | Triggered when                                                                                    | Data provided                     |
+|----------------------------|---------------------------------------------------------------------------------------------------|-----------------------------------|
+| `Bria_InitialLoadComplete` | iFrame initial page load is complete, can be used to show a loader on your web page               |                                   |
+| `Bria_CloseClicked`        | The user clicked on the iFrame close button, in case you enabled the iFrame close button          |                                   |
+| `Bria_Navigate`            | The user navigated between iFrame pages                                                           | `to`                              |
+| `Bria_Action`              | An action is made by the user, see the `Post Message Action Types` section below for more details | `page`, `action`, additional data |
 
 ### Post Message Data Fields
 The below attributes are passed through the `message` field:
