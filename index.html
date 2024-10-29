@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bria's iFrame</title></head>
+        <title>Bria's iFrame v2.0</title></head>
     <style>
         html, body, .container {
             height: 100%;
@@ -30,8 +30,7 @@
         </div>
         <script>
             const iframeId = "1";
-            const vhash = "8679a552aa79cc96"
-            const iframeUrl = `https://prod.embedded.bria.ai/?iframeId=${iframeId}&sourceDomain=${window.location.origin}&vhash=${vhash}`;
+            const iframeUrl = `https://iframe.bria.ai/?iframeId=${iframeId}&imageUrl=https://images.bria.ai/images_resized/8679a552aa79cc96.png`;
 
             const iframeElement = document.createElement("iframe");
             iframeElement.setAttribute("src", iframeUrl);

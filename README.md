@@ -23,16 +23,10 @@ By following these steps, you can successfully integrate BRIA's iFrame into your
 ## iFrame URL Query Parameters
 URL query parameters are pieces of information added to the iFrame URL to pass specific details that affect the content or behavior of the iFrame.
 
-| Query Parameter         | Details                                                                                                                                                                         | Is required?                                                                                        |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `iframeId`              | The ID of the iFrame                                                                                                                                                            | Yes                                                                                                 |
-| `vhash`                 | BRIA's visual ID of the image to open inside the iFrame Playground page, you can use this if you already have the image registered into BRIA                                    | Either imageUrl or vhash is required in case the iFrame starting page is set to the Playground page |
-| `imageUrl`              | The URL of the image to open inside the iFrame Playground page                                                                                                                  | Either imageUrl or vhash is required in case the iFrame starting page is set to the Playground page |
-| `usageText`             | It is possible to add text that will appear in the header row in the Playground page (note: it is advised to keep the text as short as possible to fit the space in the header) | No                                                                                                  |
-| `sourceDomain`          | Should pass the parent website host in order to make postMessages work, example: https://example.com                                                                            |                                                                                                     |
-| `userId`                | The userId coming from the parent site, we return this value in the postMessages                                                                                                |                                                                                                     |
-| `sessionId`             | The sessionId coming from the parent site, we return this value in the postMessages                                                                                             |                                                                                                     |
-| `selectedTab`           | To open a specific tab in the playground, for example: presenters, size, etc.                                                                                                   |                                                                                                     |
+| Query Parameter         | Details                                                           | Is required? |
+|-------------------------|-------------------------------------------------------------------|--------------|
+| `iframeId`              | The ID of the iFrame                                              | Yes          |
+| `imageUrl`              | The URL of the image to open inside the iFrame image editing page | No           |
 
 ---
 
@@ -79,38 +73,41 @@ Post message payload includes the following attributes as a JSON object:
 
 ```json
 {
+  "iframeId": "The iFrameId which the message is sent from",
   "type": "The post message type, see the `Post Message Types` section below for more details",
-  "message": "post message data, see the `Post Message Data Fields` section below for more details",
-  "inputData": {
-    "userId": "Represents the user ID passed when the iFrame was called for the first time in the session",
-    "sessionId": "Represents the session ID passed when the iFrame was called for the first time in the session",
-    "vhash": "VisualHash value (Bria's Image unique ID)",
-    "...": "Other attributes that were fed into the iFrame when initiated in your web page"
-  }
+  "message": "post message data, see the `Post Message Data Fields` section below for more details"
 }
 ```
 
 ### Post Message Types:
 
-| Post message type           | Triggered when                                                                           | Data provided         |
-|-----------------------------|------------------------------------------------------------------------------------------|-----------------------|
-| `Bria_ImageSave`            | The user clicks on the save image button                                                 | `imageUrl`, `changes` |
-| `Bria_ImageSavePSD`         | The user clicks on the save PSD button                                                   | `imageUrl`, `changes` |
-| `Bria_ImageDownload`        | The user clicks on the download image button                                             | `imageUrl`, `changes` |
-| `Bria_ApplyChange`          | An image is manipulated in the Playground                                                | `type`, `action`      |
-| `Bria_ApiAction`            | An API action is made                                                                    | `type`                |
-| `Bria_InitialLoadComplete`  | iFrame initial page load is complete, can be used to show a loader on your web page      |                       |
-| `Bria_GalleryImageOpen`     | The user clicks an image in the galley page                                              |                       |
-| `Bria_GalleryOpen`          | The user opened the gallery page                                                         |                       |
-| `Bria_IframePageNavigation` | The user navigated between iFrame pages                                                  | `page`, `path`        |
-| `Bria_CloseClicked`         | The user clicked on the iFrame close button, in case you enabled the iFrame close button |                       |
+| Post message type          | Triggered when                                                                                    | Data provided         |
+|----------------------------|---------------------------------------------------------------------------------------------------|-----------------------|
+| `Bria_InitialLoadComplete` | iFrame initial page load is complete, can be used to show a loader on your web page               |                       |
+| `Bria_CloseClicked`        | The user clicked on the iFrame close button, in case you enabled the iFrame close button          |                       |
+| `Bria_Navigate`            | The user navigated between iFrame pages                                                           | `page`, `path`        |
+| `Bria_Action`              | An action is made by the user, see the `Post Message Action Types` section below for more details | `type`                |
 
 ### Post Message Data Fields
-
 The below attributes are passed through the `message` field:
-* `imageUrl`: The URL of the manipulated image
-* `changes`: The changes applied to the manipulated image
-* `type`: The type of the manipulation, can be: `expression`, `diversity`, `remove_object`, `increase_resolution`, `remove_background`, `Blur_background`, `Image_Style`, `replace_background`, `uncrop` or `presenters_style`
-* `action`: Specific values for the manipulation, for example, the selected face `expression` manipulation value (`Happy`, `Sad`, etc.)
-* `page`: The name of the navigated page, could be `gallery`, `playground`, etc.
-* `path`: The path of the navigated page, could be `/gallery`, `/gallery/{vhash}`, etc.
+* `page`: The name of the app page, could be `Image Generation`, `Image Editing`, `Campaign`, etc.
+* `action`: The action made by the user, could be any of the `Post Message Action Types`.
+* Additional data fields: Each action can have its own data fields, for example, the `upload` action contains the `items` array which represents the uploaded items, and the `type` field which defines the uploaded item type.
+
+
+### Post Message Action Types
+The below action types are currently supported by the iFrame:
+* `save`: The user saved an item, see the `Post Message Item Types` below.
+* `download`: The user saved an item, see the `Post Message Item Types` below.
+* `erase_object`: The user used the eraser tool.
+* `generate`: The user generated an image in the open app.
+* `upload`: The user uploaded an image into the open app.
+
+### Post Message Item Types
+The item object consists of the `src` attribute which contains the URL or the base64 representation of the passed object, and the `type` attribute which represents the type of the item.
+The below item types are supported in the iFrame post messages:
+* `image`: Image data type which could be png, jpeg, base64, svg, etc.
+* `psd`: PSD file.
+* `template`: Campaign template.
+
+
