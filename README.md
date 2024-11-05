@@ -111,4 +111,9 @@ The below item types are supported in the iFrame post messages:
 * `psd`: PSD file.
 * `template`: Campaign template.
 
+---
 
+### Simplified Access with BRIA's SSO Integration
+BRIA’s Single Sign-On (SSO) integration allows users to register and log in easily with their organization's credentials, enabling secure, centralized access to the platform. This feature is especially beneficial in BRIA’s campaign application, where it helps differentiate users within the same organization, ensuring accurate user tracking and data management. SSO integration not only reduces password fatigue but also enhances security by streamlining authentication, ultimately improving the overall user experience and protecting organizational data. 
+
+[Contact BRIA](https://bria.ai/contact-us) for more information on enabling SSO for your organization.
