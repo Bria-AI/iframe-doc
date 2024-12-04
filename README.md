@@ -74,6 +74,7 @@ Post message payload includes the following attributes as a JSON object:
 ```json
 {
   "iframeId": "The iFrameId which the message is sent from",
+  "sessionId": "A generated sessionId that represents the current iFrame run",
   "type": "The post message type, see the `Post Message Types` section below for more details",
   "message": "post message data, see the `Post Message Data Fields` section below for more details"
 }
@@ -103,6 +104,7 @@ The below action types are currently supported by the iFrame:
 * `erase_object`: The user used the eraser tool.
 * `generate`: The user generated an image in the open app.
 * `upload`: The user uploaded an image into the open app.
+* `LogoClick`: The user clicked on the logo in the header.
 
 ### Post Message Item Types
 The item object consists of the `src` attribute which contains the URL or the base64 representation of the passed object, and the `type` attribute which represents the type of the item.
